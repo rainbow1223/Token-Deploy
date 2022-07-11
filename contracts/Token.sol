@@ -4,6 +4,8 @@
 // It will be used by the Solidity compiler to validate its version.
 pragma solidity ^0.8.9;
 
+import "hardhat/console.sol";
+
 // This is the main building block for smart contracts.
 contract Token {
     // Some string type variables to identify the token.
@@ -48,7 +50,7 @@ contract Token {
         // Transfer the amount.
         balances[msg.sender] -= amount;
         balances[to] += amount;
-
+        console.log("%s is transfered from %s to %s.", amount, msg.sender, to);
         // Notify off-chain applications of the transfer.
         emit Transfer(msg.sender, to, amount);
     }
